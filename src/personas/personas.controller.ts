@@ -1,28 +1,24 @@
 import {
   Controller,
   Get,
-  Post,
-  Body,
   Patch,
   Param,
   Delete,
   ParseIntPipe,
   UseGuards,
+  Body,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { PersonasService } from './personas.service';
-import { CreatePersonaDto } from './dto/create-persona.dto';
 import { UpdatePersonaDto } from './dto/update-persona.dto';
 
 @Controller('personas')
-@UseGuards(AuthGuard('jwt')) // <-- ¡GUARDIÁN DESPLEGADO AQUÍ!
+@UseGuards(AuthGuard('jwt'))
 export class PersonasController {
   constructor(private readonly personasService: PersonasService) {}
 
-  @Post()
-  create(@Body() createPersonaDto: CreatePersonaDto) {
-    return this.personasService.create(createPersonaDto);
-  }
+  // El método @Post() create() ha sido ELIMINADO.
+  // La creación de usuarios ahora solo se maneja en AuthController.
 
   @Get()
   findAll() {
