@@ -12,14 +12,10 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      type: 'sqlite',
+      database: 'database.sqlite',
       autoLoadEntities: true,
-      synchronize: false, // ¡Mantenemos la seguridad!
+      synchronize: true, // Temporal para crear tablas
     }),
     PersonasModule, //hola
     MascotasModule,

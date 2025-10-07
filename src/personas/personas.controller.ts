@@ -12,6 +12,10 @@ import { AuthGuard } from '@nestjs/passport';
 import { PersonasService } from './personas.service';
 import { UpdatePersonaDto } from './dto/update-persona.dto';
 
+// ⚠️ AVISO IMPORTANTE:
+// El método POST de personas fue eliminado el 2025-10-06.
+// La documentación de Swagger puede mostrarlo aún, pero no está disponible en esta versión.
+
 @Controller('personas')
 @UseGuards(AuthGuard('jwt'))
 export class PersonasController {

@@ -41,6 +41,10 @@ export class AuthService {
     const payload = { id: persona.id_persona, dni: persona.dni };
     const accessToken = this.jwtService.sign(payload);
 
-    return { accessToken };
+    // Manera segura de devolver el objeto sin la contraseña
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...user } = persona;
+
+    return { accessToken, user };
   }
 }

@@ -7,9 +7,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Prefijo global para todas las rutas
+  app.setGlobalPrefix('api');
+
   // ¡ESTA ES LA LÍNEA QUE AÑADIMOS!
   // Le da permiso al frontend para que se pueda comunicar con nuestra API.
-  app.enableCors();
+  app.enableCors({
+    origin: '*', // Permite todas las origines
+    credentials: true,
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({
